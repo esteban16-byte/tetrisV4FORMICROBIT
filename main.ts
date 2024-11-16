@@ -438,8 +438,9 @@ let state = 0
 let Leds = false
 Leds = true
 basic.showIcon(IconNames.Happy)
-music._playDefaultBackground(music.builtInPlayableMelody(Melodies.PowerUp), music.PlaybackMode.UntilDone)
+music._playDefaultBackground(music.builtInPlayableMelody(Melodies.PowerUp), music.PlaybackMode.InBackground)
 basic.clearScreen()
+Animaton()
 init()
 loops.everyInterval(10, function () {
     if (Mode == 0) {
