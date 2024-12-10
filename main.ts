@@ -66,126 +66,6 @@ function A () {
 function Animaton () {
     Leds = true
     basic.showLeds(`
-        . . # # .
-        . . # . .
-        # . . . .
-        # # . # .
-        # . # # #
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . . . . .
-        . . # # .
-        # . # . .
-        # # . # .
-        # . # # #
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . . . . .
-        . . . . .
-        # . # # .
-        # # # # .
-        # . # # #
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . . . . .
-        . . . . .
-        # . # # .
-        # # # # .
-        # . # # #
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . . . . #
-        . . . . .
-        # . # # .
-        # # # # .
-        # . # # #
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . . . . #
-        . . . . #
-        # . # # .
-        # # # # .
-        # . # # #
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . . . . .
-        . . . . #
-        # . # # #
-        # # # # .
-        # . # # #
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . . . . .
-        . . . . .
-        # . # # #
-        # # # # #
-        # . # # #
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . . . . .
-        . . . . .
-        # . # # #
-        . . . . .
-        # . # # #
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . . . . .
-        . . . . .
-        . . . . .
-        # . # # #
-        # . # # #
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . # . . .
-        . . . . .
-        . . . . .
-        # . # # #
-        # . # # #
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . # . . .
-        . # . . .
-        . . . . .
-        # . # # #
-        # . # # #
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . . . . .
-        . # . . .
-        . # . . .
-        # . # # #
-        # . # # #
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . . . . .
-        . . . . .
-        . # . . .
-        # # # # #
-        # . # # #
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . . . . .
-        . . . . .
-        . . . . .
-        # # # # #
-        # # # # #
-        `)
-    basic.pause(100)
-    basic.showLeds(`
         . # # # .
         # # . # #
         # . . . #
@@ -193,7 +73,7 @@ function Animaton () {
         . # # # .
         `)
     basic.pause(100)
-    music.play(music.builtinPlayableSoundEffect(soundExpression.giggle), music.PlaybackMode.UntilDone)
+    music.play(music.builtinPlayableSoundEffect(soundExpression.hello), music.PlaybackMode.InBackground)
     basic.showLeds(`
         . # # # .
         # . . . #
@@ -204,10 +84,10 @@ function Animaton () {
 }
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     Leds = false
-    led.setBrightness(180)
+    led.setBrightness(200)
     if (state == -1) {
         basic.clearScreen()
-        music._playDefaultBackground(music.builtInPlayableMelody(Melodies.Nyan), music.PlaybackMode.LoopingInBackground)
+        music._playDefaultBackground(music.builtInPlayableMelody(Melodies.Funk), music.PlaybackMode.LoopingInBackground)
         state = 0
     } else if (state == 2) {
         if (block_type == 0) {
@@ -430,15 +310,12 @@ let Sound = 0
 let clear_row = 0
 let line_del = 0
 let Mode = 0
+let Leds = false
 let currY = 0
 let block_direction = 0
 let block_type = 0
 let currX = 0
 let state = 0
-let Leds = false
-Leds = true
-basic.showIcon(IconNames.Happy)
-music._playDefaultBackground(music.builtInPlayableMelody(Melodies.PowerUp), music.PlaybackMode.InBackground)
 basic.clearScreen()
 Animaton()
 init()
@@ -606,8 +483,7 @@ basic.forever(function () {
             music.stopAllSounds()
             basic.clearScreen()
             basic.pause(100)
-            music._playDefaultBackground(music.builtInPlayableMelody(Melodies.PowerDown), music.PlaybackMode.InBackground)
-            basic.showString("GAME OVER")
+            billy.say("Game Over")
             basic.showString("SCORE:")
             basic.showNumber(score)
             init()
@@ -618,8 +494,5 @@ basic.forever(function () {
 basic.forever(function () {
     if (Leds == true) {
         led.setBrightness(input.soundLevel())
-    }
-    if (Leds == false) {
-        led.setBrightness(155)
     }
 })
